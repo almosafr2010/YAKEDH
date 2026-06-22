@@ -44,8 +44,8 @@ print('All libraries imported successfully')
 # from google.colab import drive
 # drive.mount('/content/drive')
 
-!wget -O cicids2017_cleaned.csv "https://raw.githubusercontent.com/joolsa/CICIDS2017-Cleaned/main/cicids2017_cleaned.csv"
-
+# قراءة الملف مباشرة من الرابط دون الحاجة لتحميله مسبقاً بجهاز السيرفر
+df = pd.read_csv("https://raw.githubusercontent.com/joolsa/CICIDS2017-Cleaned/main/cicids2017_cleaned.csv")
 
 
 
