@@ -19,6 +19,12 @@ import matplotlib.gridspec as gridspec
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
+import urllib.request
+import os
+# التأكد من تحميل ملف البيانات تلقائياً في سيرفر Streamlit إذا لم يكن موجوداً
+if not os.path.exists("cicids2017_cleaned.csv"):
+    url = "https://raw.githubusercontent.com/joolsa/CICIDS2017-Cleaned/main/cicids2017_cleaned.csv"
+    urllib.request.urlretrieve(url, "cicids2017_cleaned.csv")
 from plotly.subplots import make_subplots
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler, RobustScaler
