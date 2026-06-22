@@ -32,11 +32,10 @@ if not os.path.exists(csv_filename):
     mock_data.loc[0] = [80, 5000, 2, 2, 'BENIGN']
     mock_data.to_csv(csv_filename, index=False)
 from plotly.subplots import make_subplots
-from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
-from sklearn.preprocessing import LabelEncoder, StandardScaler, RobustScaler
-from sklearn.ensemble import RandomForestClassifier, IsolationForest, VotingClassifier
-from sklearn.metrics import (
-    accuracy_score, classification_report, confusion_matrix,
+# بدلاً من قراءة ملفات التدريب المفقودة، نقوم ببناء الأعمدة افتراضياً لضمان تشغيل الواجهة
+cols = ['Destination Port', 'Flow Duration', 'Total Fwd Packets', 'Total Backward Packets']
+X_train = pd.DataFrame(columns=cols)
+X_test = pd.DataFrame(columns=cols)
     roc_auc_score, roc_curve, precision_recall_curve,
     average_precision_score, f1_score, precision_score, recall_score
 )
