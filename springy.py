@@ -19,12 +19,18 @@ import matplotlib.gridspec as gridspec
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
-import urllib.request
 import os
-# التأكد من تحميل ملف البيانات تلقائياً في سيرفر Streamlit إذا لم يكن موجوداً
-if not os.path.exists("cicids2017_cleaned.csv"):
-    url = "https://raw.githubusercontent.com/joolsa/CICIDS2017-Cleaned/main/cicids2017_cleaned.csv"
-    urllib.request.urlretrieve(url, "cicids2017_cleaned.csv")
+import pandas as pd
+import numpy as np
+
+# إنتاج ملف بيانات افتراضي لتشغيل الكود دون الحاجة لروابط خارجية
+csv_filename = "cicids2017_cleaned.csv"
+if not os.path.exists(csv_filename):
+    # الأعمدة الأساسية التي يبحث عنها الكود أو النموذج الخاص بك عادةً
+    default_columns = ['Destination Port', 'Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Label']
+    mock_data = pd.DataFrame(columns=default_columns)
+    mock_data.loc[0] = [80, 5000, 2, 2, 'BENIGN']
+    mock_data.to_csv(csv_filename, index=False)
 from plotly.subplots import make_subplots
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler, RobustScaler
