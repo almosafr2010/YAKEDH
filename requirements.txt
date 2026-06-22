@@ -6,3 +6,4 @@ catboost
 joblib
 seaborn
 scikit-learn
+xgboost
