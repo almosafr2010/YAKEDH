@@ -4,3 +4,4 @@ numpy
 plotly
 catboost
 joblib
+seaborn
